@@ -1,0 +1,250 @@
+---
+layout: default
+---
+
+<div class="page clearfix" index>
+    <div class="left">
+        <h1><strong>{{ site.title }}</strong></h1>
+        <hr/> <hr/>
+        <ul>
+            {% for post in paginator.posts %}
+              <li>
+                <h2>
+                  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
+                    </div>
+                    <div class="label-card">
+                        {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
+                        {% endif %}
+                    </div>
+                    <div class="label-card">
+                        {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+                    </div>
+
+                    <div class="label-card">
+                    {% include category.html %}
+                    </div>
+
+                    <div class="label-card">
+                    {% include tag.html %}
+                    </div>
+                </div>
+                <div class="excerpt">
+                    {{post.excerpt}}
+                </div>
+                <div class="read-all">
+                    <a  href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Pagination links -->
+        <div class="pagination">
+          {% if paginator.previous_page %}
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left"></i></a>
+          {% else %}
+            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
+            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+          {% endif %}
+          <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="{{ site.baseurl }}/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+          {% else %}
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+          {% endif %}
+        </div>
+    </div>
+
+    <!--
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    -->
+
+    <div class="right">
+        <div class="wrap">
+
+          <div class="sider-head">
+            <div class="author-avatar">
+              <img src="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io@main/assets/img/favicon.ico" alt={{ site.author }}>
+            </div>
+            <div class="brief-intro">
+              <div class="author-name">
+                {{ site.author }}
+              </div>
+              <div class="author-bio">
+                {{ site.author-words }}
+              </div>
+            </div>
+          </div>
+
+          <br/>
+
+        <div class="side ">
+
+          <div class="social-icons">
+            {% if site.email %} 
+              <a href="mailto:{{site.email}}" class="btn" title="email" > <svg class="icon" aria-hidden="true"><use xlink:href="#icon-email"></use></svg> </a> 
+            {% endif %} 
+            {% if site.github_username %}
+              <a href="https://github.com/{{site.github_username}}" class="btn" title="Github" target="_blank"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-git"></use></svg> </a>
+            {% endif %} 
+            {% if site.weibo_username %} 
+              <a href="https://weibo.com/{{site.weibo_username}}" class="btn" title="微博" target="_blank"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo"></use></svg> </a>
+            {% endif %} 
+            {% if site.zhihu_username %} 
+              <a href="https://www.zhihu.com/people/{{site.zhihu_username}}" class="btn" title="知乎" target="_blank"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu"></use></svg> </a> 
+            {% endif %} 
+            {% if site.netease_username %} 
+              <a href="http://{{site.netease_username}}.blog.163.com/blog/" class="btn" title="网易" target="_blank"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-wangyi"></use></svg> </a> 
+            {% endif %} 
+            {% if site.netease_username %} 
+              <a href="https://{{site.gitee_username}}.gitee.io" class="btn" title="落雪的部落格" target="_blank"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-boke"></use></svg> </a> 
+            {% endif %}            
+          </div>  
+
+          <div class="site-state">
+
+            <div class="site-state-item">
+              <a href="{{ site.category_dir }}">
+                <span class="site-state-item-count">{{ site.categories.size }}</span>
+                <span>分类</span>
+              </a>
+            </div>
+            <div class="site-state-item">
+              <a href="{{ site.tag_dir }}">
+                <span class="site-state-item-count">{{ site.tags.size }}</span>
+                <span>标签</span>
+              </a>
+            </div>
+            <div class="site-state-item">
+              <a href="{{ site.archives_dir}}">
+                <span class="site-state-item-count">{{ site.posts | size }}</span>
+                <span>归档</span>
+              </a>
+            </div>
+          </div>
+
+         </div> 
+
+            <div class="side">
+                <div>
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    推荐 
+                </div>
+
+                <ul  class="content-ul">
+                  {% for title in site.data.suggestion %}
+                    {% for post in site.posts %}
+                      {% if post.title == title %}
+                        <li>
+                          <a href="{{ site.baseurl }}{{ post.url }}">
+                            <span class="name">
+                              {{ post.title }}
+                            </span>
+                        </a>
+                      </li>
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}  
+                </ul>
+            </div> 
+
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                    分类
+                </div>
+                <ul class="content-ul" cate>
+                    {% for category in site.categories %}
+                    <li>
+                        <a href="{{ site.category_dir }}#{{ category | first }}" >
+                            <span class="name">
+                                {{ category | first }}
+                            </span>
+                            <span class="badge">{{ category | last | size }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                    标签
+                </div>
+
+                <div class="tags">
+                    {% capture tags %}
+                    {% comment %}
+                        there must be no space between for and if otherwise this tricky sort won't work.
+                        url_encode/decode is for escaping otherwise extra <a> will get generated 
+                        but it will break sort...
+                    {% endcomment %}
+                    {% for tag in site.tags %}{% if tag[1].size > site.featured-condition-size %}
+                            <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" 
+                                href="{{ site.tag_dir }}#{{ tag[0] }}"  
+                                title="{{ tag[0] }}"
+                                rel="{{ tag[1].size }}">{{ tag[0] }}</a>__SEPARATOR__
+                    {% endif %}{% endfor %}
+                    {% endcapture %}
+                    {{ tags | split:'__SEPARATOR__' | sort }}
+                </div>
+
+            </div>
+
+            <div class="side">
+                <div>
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                    归档
+                </div>
+                <ul class="content-ul" year>
+                    {% assign counter = 0 %}
+                    {% for post in site.posts %}
+                      {% assign thisyear = post.date | date: "%Y-%m" %}
+                      {% assign prevyear = post.previous.date | date: "%Y-%m" %}
+                      {% assign counter = counter | plus: 1 %}
+                      {% if thisyear != prevyear %}
+                        <li>
+                          <a href="{{ site.archives_dir }}#y{{ post.date | date: '%Y-%m' }}" class="archives-list-item" year="{{ post.date | date: '%Y-%m' }}" >
+                              <span class="name">
+                                  @ {{  post.date | date: '%Y-%m' }}
+                              </span>
+                              <span class="badge">{{ counter }}</span>
+                          </a>
+                        </li>
+                        {% assign counter = 0 %}
+                      {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="side">
+                <div>
+                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                    友站
+                </div>
+
+                <ul  class="content-ul">
+                    {% for link in site.data.siteslink %}
+                    <li>
+                        <a href="{{  link.url }}" >
+                            <span class="name">
+                                {{ link.title }}
+                            </span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div> 
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+/*---------------------- head-sidebar ------------------------*/
+
+.author-avatar img {
+  border-radius: 50%;
+  max-width: 180px;
+  border: 1px solid #f2f3f3;
+  padding: 5px;
+  margin: 10px auto;
+  display: block;
+}
+
+.brief-intro {
+  margin-bottom: 6px;
+}
+
+.brief-intro .author-name {
+  font-size: 25px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.brief-intro .author-bio {
+  text-align: center;
+  color: #333;
+}
+
+/*--------- site-state-count ----------*/
+.site-state {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.site-state a {
+  color: #777;
+}
+.site-state a:hover,
+.site-state a:focus {
+  color: #333;
+  text-decoration: none;
+}
+
+.site-state-item {
+  display: inline-block;
+  padding: 0 5px;
+  border-left: 1px solid #eee;
+}
+.site-state-item:first-child {
+  border-left: none;
+}
+
+.site-state-item-count {
+  display: block;
+}
+
+/*--------- social-icons ----------*/
+.social-icons {
+  text-align: center;
+}
+
+.social-icons .icon {
+  color: #777;
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.social-icons .icon:hover {
+  color: #333;
+}
+
+.social-icons .btn {
+  padding: 0px 3px;
+  width: 40px;
+}
+
+/*--------- tags ----------*/
+
+.tags {
+  margin-bottom: -5px;
+}
+.tags.tags-sup a,
+.tags.tags-sup .tag {
+  padding: 0 10px 0 12px;
+}
+.tags a,
+.tags .tag {
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 999em;
+  padding: 0 10px 0 10px;
+  color: #ffffff;
+  line-height: 24px;
+  font-size: 12px;
+  text-decoration: none;
+  margin: 0 1px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.tags a > sup,
+.tags .tag > sup {
+  margin-left: -2px;
+  font-weight: 700;
+}
+.tags a:hover,
+.tags .tag:hover,
+.tags a:active,
+.tags .tag:active {
+  color: white;
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+}
+
