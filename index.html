@@ -206,21 +206,43 @@ layout: default
                     归档
                 </div>
                 <ul class="content-ul" year>
-                    {% assign counter = 0 %}
+                    {% assign counteryear = 0 %}
+                    {% assign countermonth = 0 %}
                     {% for post in site.posts %}
-                      {% assign thisyear = post.date | date: "%Y-%m" %}
-                      {% assign prevyear = post.previous.date | date: "%Y-%m" %}
-                      {% assign counter = counter | plus: 1 %}
+                      {% assign thisyear = post.date | date: "%Y" %}
+                      {% assign prevyear = post.previous.date | date: "%Y" %}
+                      {% assign counteryear = counteryear | plus: 1 %}
                       {% if thisyear != prevyear %}
                         <li>
-                          <a href="{{ site.archives_dir }}#y{{ post.date | date: '%Y-%m' }}" class="archives-list-item" year="{{ post.date | date: '%Y-%m' }}" >
-                              <span class="name">
-                                  @ {{  post.date | date: '%Y-%m' }}
-                              </span>
-                              <span class="badge">{{ counter }}</span>
-                          </a>
+                          <ul class="archive-year">
+                            <span class="name">
+                              <strong>
+                                {{  post.date | date: '%Y' }}
+                              </strong>
+                            </span>
+                            <span class="badge">{{ counteryear}}</span>
+                          </ul>
+                          {% for ps in site.posts %}
+                            {% assign pyear = ps.date | date: "%Y" %}
+                            {% assign thismonth = ps.date | date: "%Y-%m" %}
+                            {% assign prevmonth = ps.previous.date | date: "%Y-%m" %}
+                            {% assign countermonth = countermonth | plus: 1 %}
+                            {% if thismonth != prevmonth %}
+                              {% if pyear == thisyear %}
+                                <li class="archive-month">
+                                  <a href="{{ site.archives_dir }}#y{{ ps.date | date: '%Y-%m' }}" class="archives-list-item" year="{{ ps.date | date: '%Y-%m' }}" >
+                                      <span class="name">
+                                        {{  ps.date | date: '%Y-%m' }}
+                                      </span>
+                                      <span class="badge">{{ countermonth }}</span>
+                                  </a>
+                                </li>
+                              {% endif %}
+                              {% assign countermonth = 0 %}
+                            {% endif %}
+                          {% endfor %}
                         </li>
-                        {% assign counter = 0 %}
+                        {% assign counteryear = 0 %}
                       {% endif %}
                     {% endfor %}
                 </ul>

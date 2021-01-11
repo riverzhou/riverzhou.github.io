@@ -128,8 +128,51 @@
                     }
                 }
                 .content-ul[year] {
-                    li {
+                    .archive-year {
+                        color: #4d6dad;
+                        transition: 0.5s ease;
+                        &:hover {
+                            color: #223253;
+                        }
                         font-size: 16px;
+                        display: block;
+                        width: 100%;
+                        padding: 2px 0;
+                        border-bottom: 1px solid #eee;
+                        &:hover {
+                            background-color: #dbdfee;
+                            .badge {
+                                background-color: #dbdfee;
+                                transform: scale(1.2) rotate(360deg);
+                            }
+                        }
+                        .name {
+                            padding-left: 15px;
+                        }
+                        .badge {
+                            display: block;
+                            //width: 20px;
+                            float: right;
+                            text-align: center;
+                            margin-right: 15px;
+                            margin-top: 3px;
+                            padding: 0 10px;
+                            font-size: 12px;
+                            color: #fff;
+                            background-color: #bbb;
+                            border-radius: 50%;
+                            transition: 0.5s ease-in-out;
+                        }
+                    }
+
+                    .archive-month {
+                        font-size: 14px;
+                        .name {
+                            padding-left: 25px;
+                        }
+                        .badge {
+                            margin-right: 25px;
+                        }
                     }
                 }
             }
