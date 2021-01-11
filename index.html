@@ -146,10 +146,12 @@ layout: default
                         <li>
                           <a href="{{ site.baseurl }}{{ post.url }}">
                             <span class="name">
-                              {{ post.title }}
+                              <strong>
+                                {{ post.title }}
+                              </strong>
                             </span>
-                        </a>
-                      </li>
+                          </a>
+                        </li>
                       {% endif %}
                     {% endfor %}
                   {% endfor %}  
@@ -161,16 +163,18 @@ layout: default
                     <i class="fa fa-th-list" aria-hidden="true"></i>
                     分类
                 </div>
-                <ul class="content-ul" cate>
+                <ul class="content-ul" >
                     {% for category in site.categories %}
-                    <li>
+                      <li>
                         <a href="{{ site.category_dir }}#{{ category | first }}" >
                             <span class="name">
+                              <strong>
                                 {{ category | first }}
+                              </strong>
                             </span>
                             <span class="badge">{{ category | last | size }}</span>
                         </a>
-                    </li>
+                      </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -205,7 +209,7 @@ layout: default
                     <i class="fa fa-archive" aria-hidden="true"></i>
                     归档
                 </div>
-                <ul class="content-ul" year>
+                <ul class="archives" >
                     {% assign counteryear = 0 %}
                     {% assign countermonth = 0 %}
                     {% for post in site.posts %}
@@ -213,15 +217,15 @@ layout: default
                       {% assign prevyear = post.previous.date | date: "%Y" %}
                       {% assign counteryear = counteryear | plus: 1 %}
                       {% if thisyear != prevyear %}
-                        <li>
-                          <ul class="archive-year">
-                            <span class="name">
-                              <strong>
-                                {{  post.date | date: '%Y' }}
-                              </strong>
-                            </span>
-                            <span class="badge">{{ counteryear}}</span>
-                          </ul>
+                        <div class='group-year'>
+                            <ul class="archive-year">
+                              <span class="name">
+                                <strong>
+                                  {{  post.date | date: '%Y' }}
+                                </strong>
+                              </span>
+                              <span class="badge">{{ counteryear}}</span>
+                            </ul>
                           {% for ps in site.posts %}
                             {% assign pyear = ps.date | date: "%Y" %}
                             {% assign thismonth = ps.date | date: "%Y-%m" %}
@@ -241,7 +245,7 @@ layout: default
                               {% assign countermonth = 0 %}
                             {% endif %}
                           {% endfor %}
-                        </li>
+                        </div>
                         {% assign counteryear = 0 %}
                       {% endif %}
                     {% endfor %}
@@ -256,13 +260,15 @@ layout: default
 
                 <ul  class="content-ul">
                     {% for link in site.data.siteslink %}
-                    <li>
+                      <li>
                         <a href="{{  link.url }}" >
                             <span class="name">
+                              <strong>
                                 {{ link.title }}
+                              </strong>
                             </span>
                         </a>
-                    </li>
+                      </li>
                     {% endfor %}
                 </ul>
             </div> 
