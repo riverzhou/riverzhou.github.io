@@ -1,0 +1,16 @@
+{
+  "name": "@riverzhou/prismjs",
+  "version": "1.0.0",
+  "description": "Custom PrismJS Package",
+  "main": "prism.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/riverzhou/prismjs"
+  },
+  "keywords": [
+    "prismjs",
+    "highlight"
+  ],
+  "author": "prismjs.com",
+  "license": "MIT"
+}
