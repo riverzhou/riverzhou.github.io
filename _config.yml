@@ -24,7 +24,8 @@ kramdown:
     disable : true
 
 sass:
-    style: compressed
+    style: compact
+    #style: compressed
 
 #search: true
 
