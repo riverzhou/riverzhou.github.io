@@ -59,4 +59,5 @@ valine_appKey: llR3NXKMJ0R479oLWppzO3Wp
 cdn_jsdelivr: true
 
 emoji:
-  src: "https://github.githubassets.com/images/icons"
+  src: "https://cdn.jsdelivr.net/gh/riverzhou/githubemoji"
+  #src: "https://github.githubassets.com/images/icons"
