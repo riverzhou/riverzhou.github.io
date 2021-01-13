@@ -57,3 +57,6 @@ valine_appId: 836B7oFHvbSSKeUrmOKbMkCm-gzGzoHsz
 valine_appKey: llR3NXKMJ0R479oLWppzO3Wp
 
 cdn_jsdelivr: true
+
+emoji:
+  src: "https://github.githubassets.com/images/icons/emoji"
