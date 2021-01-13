@@ -7,8 +7,13 @@
 
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
 
-  <link rel="preload" id="prismcss" href="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.css" as="style" onload="this.tag='loaded'" />
+  <!--
+  <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io@main/assets/img/background.png" as="image" />
+  -->
+
+  <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" type="font/woff2"/>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'" />
+  <link rel="preload" id="prismcss" href="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.css" as="style" onload="this.tag='loaded'" />
 
   {% if page.avatar %}
   <!--
