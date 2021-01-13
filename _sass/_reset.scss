@@ -84,11 +84,12 @@ blockquote {
   }
 }
 table {
+  display:block;
+  table-layout: auto;
   border-top: 2px solid #777;
   border-bottom: 2px solid #777;
   margin: 8px 0;
   border-collapse: collapse;
-  table-layout: fixed;
   max-width: 100%;
   overflow-x: auto;
   thead {
