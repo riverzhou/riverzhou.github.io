@@ -3,36 +3,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-
-  <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io@main/assets/img/favicon.ico" type="image/x-icon" />
-  <!--
-  <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
-  -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@riverzhou/socialicon/iconfont.min.js" async ></script>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
 
-  <script type="text/javascript" id='valine' src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js' ></script>
+  <link rel="preload" id="prismcss" href="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.css" as="style" onload="this.tag='loaded'" />
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'" />
+
+  {% if page.avatar %}
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/avatar.ico" as="image" />
+  <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/npm/@riverzhou/socialicon/iconfont.min.js" charset="utf-8"></script>
+  {% endif %}
+
+  <script type="text/javascript" id="prismjs" defer="defer" src="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.js" charset="utf-8"></script>
+  <script>
+    document.getElementById("prismjs").onload = () => {
+      var prismcss = document.getElementById("prismcss");
+      if (prismcss.tag == "loaded") {
+        prismcss.rel = "stylesheet";
+      } else {
+        prismcss.onload = () => {
+          this.rel = "stylesheet";
+        };
+      }
+    };
+  </script>
+
+  <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/js/main.min.js" charset="utf-8"></script>
+
+  <script type="text/javascript" id="smoothjs" defer="defer" src="https://cdn.jsdelivr.net/npm/smooth-scroll@11.1.0/dist/js/smooth-scroll.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    document.getElementById("smoothjs").onload = () => {
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: "easeInOutCubic", // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    };
+  </script>
+
+  {% if page.layout == "post" %}
+
+  <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/js/pageContent.min.js" charset="utf-8"></script>
+
+  <script type="text/javascript" id="valinejs" defer="defer" src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js" charset="utf-8"></script>
+  <script>
+    document.getElementById("valinejs").onload = () => {
+      new Valine({
+        el: "#vcomments",
+        appId: "{{ site.valine_appId }}",
+        appKey: "{{ site.valine_appKey }}",
+      });
+    };
+  </script>
+
+  {% endif %}
+
+  <!-- -->
 
   {% if page.mathjax %}
   <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+      }
+      "HTML-CSS": {
+        linebreaks: {
+          automatic: true,
+          width: "container"
         }
-        "HTML-CSS": {
-          linebreaks: {
-            automatic: true,
-            width: "container"
-          }
-        }
+      }
     });
   </script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+  <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   {% endif %}
 
   <script>
@@ -44,4 +88,9 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
+
+  <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/npm/busuanzi/bsz.pure.mini.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/main.min.css" />
 </head>

@@ -1,5 +1,6 @@
 ---
 layout: default
+avatar: true
 ---
 
 <div class="page clearfix" index>
@@ -72,7 +73,7 @@ layout: default
 
           <div class="sider-head">
             <div class="author-avatar">
-              <img src="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io@main/assets/img/favicon.ico" alt={{ site.author }}>
+              <img src="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/avatar.ico" alt={{ site.author }}>
             </div>
             <div class="brief-intro">
               <div class="author-name">
@@ -146,10 +147,12 @@ layout: default
                         <li>
                           <a href="{{ site.baseurl }}{{ post.url }}">
                             <span class="name">
-                              {{ post.title }}
+                              <strong>
+                                {{ post.title }}
+                              </strong>
                             </span>
-                        </a>
-                      </li>
+                          </a>
+                        </li>
                       {% endif %}
                     {% endfor %}
                   {% endfor %}  
@@ -161,16 +164,18 @@ layout: default
                     <i class="fa fa-th-list" aria-hidden="true"></i>
                     分类
                 </div>
-                <ul class="content-ul" cate>
+                <ul class="content-ul" >
                     {% for category in site.categories %}
-                    <li>
+                      <li>
                         <a href="{{ site.category_dir }}#{{ category | first }}" >
                             <span class="name">
+                              <strong>
                                 {{ category | first }}
+                              </strong>
                             </span>
                             <span class="badge">{{ category | last | size }}</span>
                         </a>
-                    </li>
+                      </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -205,22 +210,44 @@ layout: default
                     <i class="fa fa-archive" aria-hidden="true"></i>
                     归档
                 </div>
-                <ul class="content-ul" year>
-                    {% assign counter = 0 %}
+                <ul class="archives" >
+                    {% assign counteryear = 0 %}
+                    {% assign countermonth = 0 %}
                     {% for post in site.posts %}
-                      {% assign thisyear = post.date | date: "%Y-%m" %}
-                      {% assign prevyear = post.previous.date | date: "%Y-%m" %}
-                      {% assign counter = counter | plus: 1 %}
+                      {% assign thisyear = post.date | date: "%Y" %}
+                      {% assign prevyear = post.previous.date | date: "%Y" %}
+                      {% assign counteryear = counteryear | plus: 1 %}
                       {% if thisyear != prevyear %}
-                        <li>
-                          <a href="{{ site.archives_dir }}#y{{ post.date | date: '%Y-%m' }}" class="archives-list-item" year="{{ post.date | date: '%Y-%m' }}" >
+                        <div class='group-year'>
+                            <ul class="archive-year">
                               <span class="name">
-                                  @ {{  post.date | date: '%Y-%m' }}
+                                <strong>
+                                  {{  post.date | date: '%Y' }}
+                                </strong>
                               </span>
-                              <span class="badge">{{ counter }}</span>
-                          </a>
-                        </li>
-                        {% assign counter = 0 %}
+                              <span class="badge">{{ counteryear}}</span>
+                            </ul>
+                          {% for ps in site.posts %}
+                            {% assign pyear = ps.date | date: "%Y" %}
+                            {% assign thismonth = ps.date | date: "%Y-%m" %}
+                            {% assign prevmonth = ps.previous.date | date: "%Y-%m" %}
+                            {% assign countermonth = countermonth | plus: 1 %}
+                            {% if thismonth != prevmonth %}
+                              {% if pyear == thisyear %}
+                                <li class="archive-month">
+                                  <a href="{{ site.archives_dir }}#y{{ ps.date | date: '%Y-%m' }}" class="archives-list-item" year="{{ ps.date | date: '%Y-%m' }}" >
+                                      <span class="name">
+                                        {{  ps.date | date: '%Y-%m' }}
+                                      </span>
+                                      <span class="badge">{{ countermonth }}</span>
+                                  </a>
+                                </li>
+                              {% endif %}
+                              {% assign countermonth = 0 %}
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                        {% assign counteryear = 0 %}
                       {% endif %}
                     {% endfor %}
                 </ul>
@@ -234,13 +261,15 @@ layout: default
 
                 <ul  class="content-ul">
                     {% for link in site.data.siteslink %}
-                    <li>
+                      <li>
                         <a href="{{  link.url }}" >
                             <span class="name">
+                              <strong>
                                 {{ link.title }}
+                              </strong>
                             </span>
                         </a>
-                    </li>
+                      </li>
                     {% endfor %}
                 </ul>
             </div> 

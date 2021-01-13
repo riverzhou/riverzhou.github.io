@@ -1,12 +1,12 @@
 title: 落雪的随笔小屋
 brief-intro: "River's Blog"
-url: "//www.riverzhou.cn"
-baseurl: ''
+url: "https://www.riverzhou.cn"
+baseurl: ""
 author: River
 author-words: 一蓑烟雨任平生
-description: blog river riverzhou riverzhou2000 github jekyll c python javascript markdown store  随笔小屋 落雪的随笔小屋 
+description: blog river riverzhou riverzhou2000 github jekyll c python javascript markdown store  随笔小屋 落雪的随笔小屋
 
-permalink: /:categories/:title.html  
+permalink: /:categories/:title.html
 
 plugins:
   - jemoji
@@ -20,23 +20,29 @@ plugins:
 
 kramdown:
   input: GFM
+  syntax_highlighter_opts:
+    disable : true
+
+sass:
+    style: compact
+    #style: compressed
 
 #search: true
 
 paginate: 7
-paginate_path: 'page:num'
+paginate_path: "page:num"
 exclude: []
 
 excerpt_separator: <!-- more -->
 
 featured-condition-size: 0
 
-email: riverzhou2000@163.com  
-github_username: riverzhou  
-zhihu_username: riverzhou  
-weibo_username: riverzhou2000  
-netease_username: riverzhou2000  
-gitee_username: riverzhou2000  
+email: riverzhou2000@163.com
+github_username: riverzhou
+zhihu_username: riverzhou
+weibo_username: riverzhou2000
+netease_username: riverzhou2000
+gitee_username: riverzhou2000
 
 category_dir: /category/
 tag_dir: /tag/
@@ -44,11 +50,14 @@ archives_dir: /archive/
 
 baidu_tongji_id: 19dbd3f5385828ba5ee162fce64681bf
 
-#valine_appId: dPnwX9jStAhBU152CYlzjcsI-9Nh9j0Va 
-#valine_appKey: dQT6S0tEqLB3NLCI8xjIPd7d 
+#valine_appId: dPnwX9jStAhBU152CYlzjcsI-9Nh9j0Va
+#valine_appKey: dQT6S0tEqLB3NLCI8xjIPd7d
 
 valine_appId: 836B7oFHvbSSKeUrmOKbMkCm-gzGzoHsz
 valine_appKey: llR3NXKMJ0R479oLWppzO3Wp
 
 cdn_jsdelivr: true
 
+emoji:
+  src: "https://cdn.jsdelivr.net/gh/riverzhou/githubemoji"
+  #src: "https://github.githubassets.com/images/icons"
