@@ -84,7 +84,7 @@ blockquote {
   }
 }
 table {
-  display:block;
+  display: block;
   table-layout: auto;
   border-top: 2px solid #777;
   border-bottom: 2px solid #777;
@@ -123,6 +123,13 @@ img {
 }
 
 pre {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+article {
+  display: block;
   max-width: 100%;
   overflow-x: auto;
 }
