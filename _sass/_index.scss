@@ -125,6 +125,9 @@
             &:last-of-type a {
               border: none;
             }
+            &:last-child {
+              margin-bottom: 8px;
+            }
           }
         }
       }
