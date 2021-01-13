@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Welcome to Jekyll!
-category: Jekyll 
+category: 手册 
 tags: 
   - Jekyll
+  - 手册 
 ---
 Origin Offical Announce
 <!-- more -->
