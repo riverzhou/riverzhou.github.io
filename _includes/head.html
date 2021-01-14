@@ -8,45 +8,45 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
 
   <!--
-  <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/background.png" as="image" />
+  <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/favicon.ico" as="image" type="image/svg+xml" />
   -->
 
+  <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/background.png" as="image" type="image/png" />
   <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" type="font/woff2" />
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'" />
-  <link rel="preload" id="prismcss" href="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.css" as="style" onload="this.tag='loaded'" />
+
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" as="style" type="text/css" />
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.css" as="style" type="text/css" />
 
   {% if page.avatar %}
   <!--
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/avatar.ico" as="image" />
   -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/avatar.svg" as="image" />
+  <link crossorigin rel="preload" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/avatar.svg" as="image" />
+
   <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/npm/@riverzhou/socialicon/iconfont.min.js" charset="utf-8"></script>
   {% endif %}
-
-  <script type="text/javascript" id="prismjs" defer="defer" src="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.js" charset="utf-8"></script>
-  <script>
-    document.getElementById("prismjs").onload = () => {
-      var prismcss = document.getElementById("prismcss");
-      if (prismcss.tag == "loaded") {
-        prismcss.rel = "stylesheet";
-      } else {
-        prismcss.onload = () => {
-          this.rel = "stylesheet";
-        };
-      }
-    };
-  </script>
 
   <script type="text/javascript" defer="defer" src="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/js/main.min.js" charset="utf-8"></script>
 
   <script type="text/javascript" id="smoothjs" defer="defer" src="https://cdn.jsdelivr.net/npm/smooth-scroll@11.1.0/dist/js/smooth-scroll.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-    document.getElementById("smoothjs").onload = () => {
+    document.getElementById("smoothjs").onload = function () {
       smoothScroll.init({
         speed: 500, // Integer. How fast to complete the scroll in milliseconds
         easing: "easeInOutCubic", // Easing pattern to use
         offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
       });
+    };
+  </script>
+
+  <script type="text/javascript" id="prismjs" defer="defer" src="https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.js" charset="utf-8"></script>
+  <script>
+    document.getElementById("prismjs").onload = function () {
+      var preloadLink = document.createElement("link");
+      preloadLink.rel = "stylesheet";
+      preloadLink.type = "text/css";
+      preloadLink.href = "https://cdn.jsdelivr.net/npm/@riverzhou/prismjs/prism.min.css";
+      document.head.appendChild(preloadLink);
     };
   </script>
 
@@ -56,7 +56,7 @@
 
   <script type="text/javascript" id="valinejs" defer="defer" src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js" charset="utf-8"></script>
   <script>
-    document.getElementById("valinejs").onload = () => {
+    document.getElementById("valinejs").onload = function () {
       new Valine({
         el: "#vcomments",
         appId: "{{ site.valine_appId }}",
@@ -101,8 +101,10 @@
 
   <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/img/favicon.ico" />
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/main.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" />
+
   <!--
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/riverzhou/riverzhou.github.io/assets/main.min.css" />
   -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 </head>
