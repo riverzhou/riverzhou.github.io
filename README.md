@@ -5,7 +5,7 @@
 ---
 Gemfile
 ```ruby
-source 'https://mirrors.ustc.edu.cn/rubygems/'
+source 'https://gems.ruby-china.com'
 
 gem 'github-pages' , group: :jekyll_plugins
 gem 'wdm' if Gem.win_platform?
